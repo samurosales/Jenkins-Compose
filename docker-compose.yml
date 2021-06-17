@@ -1,0 +1,16 @@
+version: '3.1'
+services:
+  jenkins:
+    container_name: jenkins
+    restart: always
+    image: sa-lab-dev-jenkins
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+        - '70:8080'
+    volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+        - /opt/local/jenkins_home:/var/jenkins_home
+        - /opt/local/jenkins_home/plugins:/usr/share/jenkins/ref/plugins
+        - /opt/local/jenkins_home/plugins.txt:/usr/share/jenkins/ref/plugins.txt
